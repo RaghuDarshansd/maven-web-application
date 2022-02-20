@@ -10,7 +10,7 @@ pipelineTriggers([pollSCM('* * * * *')])])
 
 stage('CheckoutCode'){
 
-git branch: 'development', credentialsId: '352cc3f6-7324-4a22-8c47-1424e7b2efd0', url: 'https://github.com/MithunTechnologiesDevOps/maven-web-application.git'
+git branch: 'development', credentialsId: '2b312a31-b3ba-470d-8ba6-45b331da3258', url: 'https://github.com/RaghuDarshansd/maven-web-application.git'
 }
 
 
@@ -28,8 +28,8 @@ sh "${mavenHome}/bin/mvn deploy"
 
 stage('DeployAppintoTomcatServer')
 {
-sshagent(['c29671b1-f627-4b75-a391-49155466e661']) {
- sh  "scp -o StrictHostKeyChecking=no target/maven-web-application.war  ec2-user@65.0.27.170:/opt/apache-tomcat-9.0.56/webapps/"
+sshagent(['e8d11222-2876-45d0-be95-69c8165e1717']) {
+ sh  "scp -o StrictHostKeyChecking=no target/maven-web-application.war  ec2-user@172.31.13.224:/opt/apache-tomcat-9.0.56/webapps/"
 }
 
 }
